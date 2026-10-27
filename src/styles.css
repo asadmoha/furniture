@@ -1,0 +1,117 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-serif: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "EB Garamond", Georgia, serif;
+  --radius-sm: calc(var(--radius) - 2px);
+  --radius-md: var(--radius);
+  --radius-lg: var(--radius);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-walnut: var(--walnut);
+  --color-cream: var(--cream);
+  --color-forest: var(--forest);
+  --color-brass: var(--brass);
+}
+
+:root {
+  --radius: 0.125rem;
+  --cream: oklch(0.96 0.02 85);
+  --walnut: oklch(0.27 0.04 50);
+  --forest: oklch(0.33 0.05 155);
+  --brass: oklch(0.7 0.1 75);
+  --background: var(--cream);
+  --foreground: var(--walnut);
+  --card: oklch(0.92 0.03 80);
+  --card-foreground: var(--walnut);
+  --popover: var(--cream);
+  --popover-foreground: var(--walnut);
+  --primary: var(--forest);
+  --primary-foreground: var(--cream);
+  --secondary: oklch(0.88 0.035 78);
+  --secondary-foreground: var(--walnut);
+  --muted: oklch(0.9 0.03 80);
+  --muted-foreground: oklch(0.45 0.04 55);
+  --accent: var(--brass);
+  --accent-foreground: var(--walnut);
+  --destructive: oklch(0.55 0.2 27);
+  --destructive-foreground: var(--cream);
+  --border: oklch(0.8 0.04 75);
+  --input: oklch(0.8 0.04 75);
+  --ring: var(--brass);
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    font-size: 1.125rem;
+  }
+  h1, h2, h3, h4 { font-family: var(--font-serif); font-weight: 500; letter-spacing: -0.01em; }
+}
+
+@utility eyebrow {
+  font-family: var(--font-sans);
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  font-size: 0.75rem;
+  color: var(--brass);
+}
+
+@utility btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.9rem 2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 0.8rem;
+  transition: all 0.4s ease;
+  border: 1px solid transparent;
+}
+@utility btn-primary {
+  background: var(--forest);
+  color: var(--cream);
+  &:hover { background: var(--walnut); }
+}
+@utility btn-outline {
+  border-color: currentColor;
+  &:hover { background: var(--brass); color: var(--walnut); border-color: var(--brass); }
+}
+
+@utility img-zoom {
+  overflow: hidden;
+  & img { transition: transform 1.2s cubic-bezier(.2,.7,.2,1); width: 100%; height: 100%; object-fit: cover; }
+  &:hover img { transform: scale(1.06); }
+}
+
+@utility fade-up {
+  animation: fadeUp 1s cubic-bezier(.2,.7,.2,1) both;
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: none; }
+}
